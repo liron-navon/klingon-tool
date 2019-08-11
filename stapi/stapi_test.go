@@ -51,7 +51,7 @@ func TestSearch(t *testing.T) {
 		query := url.Values{}
 		query.Add("name", test.name)
 
-		resp, err := stapi.Character.Search(query)
+		resp, _, err := stapi.Character.Search(query)
 		if err != nil {
 			if !test.expectingError {
 				t.Fatal(err)
@@ -73,26 +73,37 @@ func TestFetch(t *testing.T) {
 	tests := []struct {
 		name           string
 		uid            string
+		entityName     string
 		expectingError bool
 	}{
-		{"Worf", "CHMA0000009023", false},
-		{"Nyota Uhura", "CHMA0000115364", false},
+		{"Worf", "CHMA0000009023", "character", false},
+		{"Nyota Uhura", "CHMA0000115364", "character", false},
 	}
 
 	for _, test := range tests {
-		client, server := createMockHttpClient(t, "{}")
+		client, server := createMockHttpClient(t, fmt.Sprintf(`{
+			"%s": { "uid": "%s", "name": "%s" }
+		}`, test.entityName, test.uid, test.name))
 		stapi := New(client)
 
 		query := url.Values{}
 		query.Add("uid", test.uid)
 
-		_, err := stapi.Character.Fetch(query)
+		resp, _, err := stapi.Character.Fetch(query)
 		if err != nil {
 			if !test.expectingError {
 				t.Fatal(err)
 			}
 			t.Fatal(err)
 		}
+
+		switch test.entityName {
+		case "species":
+			require.Equal(t, resp.Species.Uid, test.uid)
+		case "character":
+			require.Equal(t, resp.Character.Uid, test.uid)
+		}
+
 		server.Close()
 	}
 }

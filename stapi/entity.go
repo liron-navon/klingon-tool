@@ -19,7 +19,7 @@ type Entity struct {
 }
 
 // Search - calls a POST request for 'search', for a stapi resource
-func (e *Entity) Search(query url.Values) (response types.SearchResponse, err error) {
+func (e *Entity) Search(query url.Values) (response types.SearchResponse, httpResponse *http.Response, err error) {
 	apiURL := fmt.Sprintf("%s/search", e.ApiUrl)
 	searchResponse := types.SearchResponse{}
 
@@ -29,32 +29,32 @@ func (e *Entity) Search(query url.Values) (response types.SearchResponse, err er
 		strings.NewReader(query.Encode()),
 	)
 	if err != nil {
-		return searchResponse, err
+		return searchResponse, resp, err
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(&searchResponse)
 	if err != nil {
-		return searchResponse, err
+		return searchResponse, resp, err
 	}
 
-	return searchResponse, nil
+	return searchResponse, resp, nil
 }
 
 // Fetch - calls a GET request for a stapi resource (requires the 'uid' query parameter)
-func (e *Entity) Fetch(query url.Values) (response types.FetchResponse, err error) {
+func (e *Entity) Fetch(query url.Values) (response types.FetchResponse, httpResponse *http.Response, err error) {
 	apiURL := fmt.Sprintf("%s?%s", e.ApiUrl, query.Encode())
 	fetchResponse := types.FetchResponse{}
 
 	resp, err := e.Client.Get(apiURL)
 
 	if err != nil {
-		return fetchResponse, err
+		return fetchResponse, resp, err
 	}
 
 	err = json.NewDecoder(resp.Body).Decode(&fetchResponse)
 	if err != nil {
-		return fetchResponse, err
+		return fetchResponse, resp, err
 	}
 
-	return fetchResponse, nil
+	return fetchResponse, resp, nil
 }
