@@ -7,7 +7,16 @@ import (
 	"testing"
 )
 
+func normalizeCliOutput(text string) string  {
+	symbolsToRemoveFromOutput := []string{"\x1b[93m", "\x1b[94m"}
+	for _, s := range symbolsToRemoveFromOutput {
+		text = strings.ReplaceAll(text, s, "")
+	}
+	return strings.TrimSpace(text)
+}
+
 func TestKlingonTool(t *testing.T) {
+
 	tests := []struct {
 		name    string
 		klingon string
@@ -31,7 +40,7 @@ func TestKlingonTool(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		output := strings.TrimSpace(string(b))
+		output := normalizeCliOutput(string(b))
 
 		lines := strings.Split(output, "\n")
 
