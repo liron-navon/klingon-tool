@@ -5,11 +5,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/golang:1.9
+      - image: circleci/golang:1.12
 
     working_directory: /go/app/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
 
-      - run: go mod download
+      - run: GO111MODULE=on go get
       - run: make test
