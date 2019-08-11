@@ -22,7 +22,7 @@ This project uses gomod for managing dependencies, and makefile as a script runn
 Tests were written with go's testing library, and testify as an assertion library.
 You can run the tests using `make test` or `go test -cover ./...`
 
-### Notes:
+#### Notes:
 I took the liberty to not make the app fail in case no name was passed to it using the command line, and allowing the user to enter a name after running the app.
 
 [circle ci]: https://circleci.com/gh/liron-navon/klingon-tool

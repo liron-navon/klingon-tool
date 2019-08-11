@@ -12,6 +12,11 @@ import (
 	"klingon-tool/app/translator"
 )
 
+const (
+	colorGold = "\x1b[93m"
+	colorBlue = "\x1b[94m"
+)
+
 func Run() {
 	var input string
 
@@ -40,8 +45,9 @@ func Run() {
 		return
 	}
 
-	fmt.Println(inputInKlingon)
-	fmt.Println(species)
+	// the colors are used is shown in the PDF file for the challange
+	fmt.Println(fmt.Sprintf("%s%s", colorGold, inputInKlingon))
+	fmt.Println(fmt.Sprintf("%s%s", colorBlue, species))
 }
 
 func speciesArrayToSpeciesName(species []stapiTypes.Species) string {
