@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"klingon-tool/stapi"
-	stapiTypes "klingon-tool/stapi/types"
-	"klingon-tool/translator"
+	"klingon-tool/app/stapi"
+	stapiTypes "klingon-tool/app/stapi/types"
+	"klingon-tool/app/translator"
 )
 
 func Run() {

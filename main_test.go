@@ -18,6 +18,12 @@ func TestKlingonTool(t *testing.T) {
 		{"Yari", "0xF8E8 0xF8D0 0xF8E1 0xF8D7", "Mintakan"},
 	}
 
+	cmd := exec.Command("go", "build")
+	_, err := cmd.CombinedOutput()
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	for _, test := range tests {
 		cmd := exec.Command("go", "run", "main.go", test.name)
 		b, err := cmd.CombinedOutput()

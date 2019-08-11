@@ -3,7 +3,7 @@ package stapi
 import (
 	"encoding/json"
 	"fmt"
-	"klingon-tool/stapi/types"
+	"klingon-tool/app/stapi/types"
 	"net/http"
 	"net/url"
 	"strings"

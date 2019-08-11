@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/stretchr/testify/require"
-	"klingon-tool/stapi/types"
+	"klingon-tool/app/stapi/types"
 	"testing"
 )
 

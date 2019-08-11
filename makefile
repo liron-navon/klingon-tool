@@ -1,8 +1,11 @@
 test:
-	go test -coverprofile=_coverage/coverage.out ./...
+	go test -coverprofile=.coverage/coverage.out ./...
 
 start:
 	go run main.go
 
 coverage:
-	go tool cover -html=_coverage/coverage.out
+	go tool cover -html=.coverage/coverage.out
+
+build:
+	go build
