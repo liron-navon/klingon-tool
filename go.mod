@@ -1,5 +1,8 @@
-module github.com/liron-navon/klingon-tool
+module klingon-tool
 
 go 1.12
 
-require github.com/stretchr/testify v1.3.0
+require (
+	github.com/dghubble/sling v1.3.0
+	github.com/stretchr/testify v1.3.0
+)

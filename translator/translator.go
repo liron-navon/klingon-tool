@@ -13,7 +13,7 @@ func TranslateEnglishToKlingon(s string) (string, error) {
 		var token string
 
 		// we only have few multi character klingon symbols
-		if strings.HasPrefix(s, "tlh")  {
+		if strings.HasPrefix(s, "tlh") {
 			token = s[0:3]
 		} else if strings.HasPrefix(s, "ch") ||
 			strings.HasPrefix(s, "ng") {
