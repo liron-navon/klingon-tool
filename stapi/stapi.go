@@ -8,7 +8,7 @@ import (
 // ApiUrl - the base url for stapi rest api
 const ApiUrl = "http://stapi.co/api/v1/rest"
 
-// Client - the stapi httpClient
+// Client - the stapi app
 type Client struct {
 	ApiUrl     string
 	HttpClient *http.Client

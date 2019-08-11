@@ -60,9 +60,9 @@ func TestSearch(t *testing.T) {
 		}
 		switch test.collectionName {
 		case "species":
-			require.Equal(t, resp.Species[0].Name, test.name)
+			require.Equal(t, resp.Species[0].Name, test.name, test)
 		case "characters":
-			require.Equal(t, resp.Characters[0].Name, test.name)
+			require.Equal(t, resp.Characters[0].Name, test.name, test)
 		}
 
 		server.Close()
@@ -99,9 +99,9 @@ func TestFetch(t *testing.T) {
 
 		switch test.entityName {
 		case "species":
-			require.Equal(t, resp.Species.Uid, test.uid)
+			require.Equal(t, resp.Species.Uid, test.uid, test)
 		case "character":
-			require.Equal(t, resp.Character.Uid, test.uid)
+			require.Equal(t, resp.Character.Uid, test.uid, test)
 		}
 
 		server.Close()

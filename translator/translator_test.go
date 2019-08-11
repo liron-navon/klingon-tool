@@ -1,7 +1,6 @@
 package translator
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -20,6 +19,6 @@ func TestTranslateEnglishToKlingon(t *testing.T) {
 
 	for _, test := range tests {
 		klingon, _ := TranslateEnglishToKlingon(test.input)
-		require.Equal(t, klingon, test.output, fmt.Sprintf("input: '%s'", test.input))
+		require.Equal(t, test.output, klingon, test)
 	}
 }
