@@ -1,9 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
+import "klingon-tool/app"
 
 func main() {
-	fmt.Println("hello jexia")
+	app.Run()
 }
