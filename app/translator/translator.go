@@ -33,7 +33,7 @@ func TranslateEnglishToKlingon(s string) (string, error) {
 		}
 
 		s = s[len(token):]
-		translation := klingonDict[token]
+		translation := pIqaDDictionary[token]
 		if translation == "" {
 			return "", errors.New("unable to translate this text to klingon")
 		}
@@ -43,8 +43,9 @@ func TranslateEnglishToKlingon(s string) (string, error) {
 	return strings.Join(results, " "), nil
 }
 
-// klingonDict - the klingon dict is our reference to translate tokens into klingon unicode symbols
-var klingonDict = map[string]string{
+// pIqaDDictionary - the pIqaD dictionary is the reference to translate english tokens into klingon unicode symbols
+// it is incomplete -
+var pIqaDDictionary = map[string]string{
 	"a":   "0xF8D0",
 	"b":   "0xF8D1",
 	"ch":  "0xF8D2",
@@ -72,4 +73,15 @@ var klingonDict = map[string]string{
 	"y":   "0xF8E8",
 	"’":   "0xF8E9",
 	" ":   "0x0020",
+	".":   "0xF8FE",
+	"0":   "0xF8F0",
+	"1":   "0xF8F1",
+	"2":   "0xF8F2",
+	"3":   "0xF8F3",
+	"4":   "0xF8F4",
+	"5":   "0xF8F5",
+	"6":   "0xF8F6",
+	"7":   "0xF8F7",
+	"8":   "0xF8F8",
+	"9":   "0xF8F9",
 }
