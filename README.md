@@ -30,4 +30,4 @@ I took the liberty to not make the app fail in case no name was passed to it usi
 [circle ci badge]: https://circleci.com/gh/liron-navon/klingon-tool.svg?style=svg
 [circle ci]: https://circleci.com/gh/liron-navon/klingon-tool
 [go]: https://golang.org/
-[preview]: http://i.imgur.com/FYoN1wH.png
+[preview]: https://i.imgur.com/gRt5GRj.png
